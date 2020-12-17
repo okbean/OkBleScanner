@@ -1,7 +1,7 @@
 # OkBleScanner
 一个用于扫描BLE设备的安卓框架(A library for scanning ble device on android)
 
-# 扫描参数(ScanConfig)
+### 扫描参数(ScanConfig)
 ```
 scanPeriod：扫描周期持续时长,默认30秒
 scanPeriodCount : 扫描周期次数，默认2次
@@ -19,7 +19,7 @@ scanInterval：两次扫描周次之间的时间间隔，默认5秒
 
 ```
 
-# 开始扫描
+### 开始扫描
 ```
     //带扫描参数
     public boolean startScan(final Context ctx, final ScanConfig config)
@@ -28,12 +28,12 @@ scanInterval：两次扫描周次之间的时间间隔，默认5秒
     public boolean startScan(final Context ctx);
 ```
 
-# 停止扫描
+### 停止扫描
 ```
     OkBleScanner.getDefault().stopScan();
 ```
 
-# 扫码回调（BleScanListener）
+### 扫码回调（BleScanListener）
 ```
         final OkBleScanner scanner = OkBleScanner.getDefault();
         final ArrayList<BleScanResult> list = new ArrayList<BleScanResult>();
