@@ -67,5 +67,22 @@ scanInterval：两次扫描周次之间的时间间隔，默认5秒
         });
     
 ```
+## 如何使用 ##
+直接引用OkBleScanner.jar, 或者implementation project(':OkBleScanner')，或者以下两个步骤：
 
+**1.在工程根目录的build.gradle添加:**
+``` 
+allprojects {
+    repositories {
+        maven { url 'https://www.jitpack.io' }
+    }
+}
+```
+
+**2.在依赖OkBleScanner的模块的build.gradle添加：**
+```
+dependencies {
+    implementation 'com.github.okbean:OkBleScanner:1.0.3'
+}
+```
 
