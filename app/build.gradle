@@ -8,7 +8,7 @@ android {
         applicationId "okble.scanner.demo"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 100
+        versionCode 101
         versionName "1.3.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -49,14 +49,14 @@ android {
         variant.outputs.all {
             def buildType = variant.buildType.name
             if("release".equalsIgnoreCase(buildType)){
-                outputFileName = "OkBleScannerDemo_release_${variant.versionName}_${variant.versionCode}_${build_time()}.apk"
+                outputFileName = "OkBleScannerDemo_release_${variant.versionCode}_${variant.versionName}_${build_time()}.apk"
             }else if("debug".equalsIgnoreCase(buildType)){
-                outputFileName = "OkBleScannerDemo_debug_${variant.versionName}_${variant.versionCode}_${build_time()}.apk"
+                outputFileName = "OkBleScannerDemo_debug_${variant.versionCode}_${variant.versionName}_${build_time()}.apk"
             }
         }
     }
-
 }
+
 def build_time() {
     return new Date().format("yyyy-MMdd-HHmm", TimeZone.getDefault())
 }

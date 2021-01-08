@@ -222,7 +222,7 @@ public final class OkBleScanner {
 
                 state = ScanState.SCANNING;
                 fireScanning();
-                startScan();
+                startScan(mConfig);
 
                 final long period = mConfig.scanPeriod();
                 await(period);
@@ -299,9 +299,9 @@ public final class OkBleScanner {
             }
         }
 
-        private void startScan(){
+        private void startScan(ScanConfig config){
             try{
-                mExecutor.executeStartScan(mScanCallback);
+                mExecutor.executeStartScan(config.scanFilters(), config.scanSettings(), mScanCallback);
             }catch (Exception ex){
                 ex.printStackTrace();
             }

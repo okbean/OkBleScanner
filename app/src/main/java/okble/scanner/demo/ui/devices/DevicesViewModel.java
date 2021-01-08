@@ -1,6 +1,7 @@
 package okble.scanner.demo.ui.devices;
 
 import android.app.Application;
+import android.bluetooth.le.ScanFilter;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -47,11 +48,13 @@ public class DevicesViewModel extends AndroidViewModel {
         final OkBleScanner scanner = OkBleScanner.getDefault();
         scanner.stopScan();
         scanner.clearScanListeners();
+        final ArrayList<ScanFilter> list = new ArrayList<ScanFilter>(1);
         final ScanConfig config = new ScanConfig.Builder()
                 .scanPeriodCount(1)
                 .scanDelay(5_000L)
                 .scanInterval(5_000L)
                 .scanPeriod(20_000L)
+                .scanFilters(list)
                 .build();
         scanner.addScanListener(mBleScanListener);
         scanner.startScan(getApplication(), config);

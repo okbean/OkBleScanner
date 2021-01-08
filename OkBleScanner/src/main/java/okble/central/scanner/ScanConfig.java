@@ -1,17 +1,26 @@
 package okble.central.scanner;
 
+import android.bluetooth.le.ScanFilter;
+import android.bluetooth.le.ScanSettings;
+
+import java.util.List;
+
 public final class ScanConfig {
 
     private final long scanDelay;
     private final long scanInterval;
     private final int scanPeriodCount;
     private final long scanPeriod;
+    private List<ScanFilter> mScanFilters;
+    private ScanSettings mScanSettings;
 
     public ScanConfig(final Builder builder){
         this.scanDelay = builder.scanDelay;
         this.scanInterval = builder.scanInterval;
         this.scanPeriod = builder.scanPeriod;
         this.scanPeriodCount = builder.scanPeriodCount;
+        this.mScanSettings = builder.mScanSettings;
+        this.mScanFilters = builder.mScanFilters;
     }
 
 
@@ -31,6 +40,14 @@ public final class ScanConfig {
         return scanPeriod;
     }
 
+    public List<ScanFilter> scanFilters() {
+        return mScanFilters;
+    }
+
+    public ScanSettings scanSettings() {
+        return mScanSettings;
+    }
+
 
     static ScanConfig getDefault(){
         return new Builder()
@@ -47,6 +64,8 @@ public final class ScanConfig {
         private int scanPeriodCount;
         private long scanPeriod;
 
+        private List<ScanFilter> mScanFilters;
+        private ScanSettings mScanSettings;
         public Builder(){
         }
 
@@ -66,6 +85,17 @@ public final class ScanConfig {
             this.scanPeriod = val;
             return this;
         }
+
+        public Builder scanSettings(ScanSettings settings){
+            this.mScanSettings = settings;
+            return this;
+        }
+
+        public Builder scanFilters(List<ScanFilter> filters){
+            this.mScanFilters = filters;
+            return this;
+        }
+
 
         public ScanConfig build(){
             return new ScanConfig(this);
